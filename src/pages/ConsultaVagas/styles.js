@@ -56,6 +56,7 @@ export const List = styled.ul`
     display: flex;
     align-items: center;
     padding-left: 1rem;
+    justify-content: space-between;
   }
 `;
 
@@ -63,4 +64,15 @@ export const Paragrafo = styled.p`
   color: #fff;
   font-size: 32px;
   text-align: center;
+`;
+
+export const ContainerIcons = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem;
+
+  & svg:last-child {
+    color: #f75a68;
+  }
 `;

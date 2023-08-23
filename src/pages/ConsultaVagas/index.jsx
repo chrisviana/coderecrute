@@ -1,71 +1,92 @@
 import { useEffect, useState } from "react";
-import { ContainerConsulta, ContentButton, ContentConsulta, Input, List, Paragrafo } from "./styles";
-
+import {
+  ContainerConsulta,
+  ContainerIcons,
+  ContentButton,
+  ContentConsulta,
+  Input,
+  List,
+  Paragrafo,
+} from "./styles";
+import { Pencil, Trash } from "@phosphor-icons/react";
+import * as Dialog from '@radix-ui/react-dialog';
+import { ModalVagas } from "../../components/ModalVagas";
+import axios from "axios";
 
 export function ConsultaVagas() {
-  const [vagas, setVagas] = useState([])
-  const [loading, setLoading] = useState(true)
+  const [vagas, setVagas] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [editVaga, setEditVaga] = useState(null)
+
+  const token = "eyJhbGciOiJIUzI1NiJ9.eyJSb2xlIjoiQWRtaW4iLCJJc3N1ZXIiOiJJc3N1ZXIiLCJVc2VybmFtZSI6IkphdmFJblVzZSIsImV4cCI6MTY4NDQyMzA0NSwiaWF0IjoxNjg0NDIzMDQ1fQ.3GDYc4YE0FhkUqz1vEaMAfASfbJbJll76yDt-h93fNo"
 
   useEffect(() => {
-    fetchVagas().then(vagas => {
-      setVagas(vagas)
+    axios.get("https://code-recrute.onrender.com/vacancies", {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    })
+    .then((response) => {
+      setVagas(response.data.result)
       setLoading(false)
     })
-    .catch(error => {
-      console.error("Erro ao carregar vagas de emprego: ", error)
-    })
-  },[])
+    .catch((error) => {error})
+  }, []);
 
-  console.log("Vagas: ",vagas)
-  const fetchVagas = () => {
-    return new Promise((resolve) => {
-      setTimeout(() => {
-        const mockVagas = [
-          {
-            id: 1,
-            title: "Desenvolvedor Front-End",
-            descricao: "Trabalha com css"
-          },
-          {
-            id: 2,
-            title: "UX/UI",
-            descricao: "Trabalha fazendo telinha"
-          },
-          {
-            id: 3,
-            title: "Desenvolvedor Back-End",
-            descricao: "Esquecer ponto e virguala"
-          }
-        ];
 
-        resolve(mockVagas)
-      },5000)
+  const getVagas = () => {
+    axios.get("https://code-recrute.onrender.com/vacancies", {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
     })
+    .then((response) => {
+      setVagas(response.data.result)
+    })
+    .catch((error) => {error})
   }
+
+  const handleEditVaga = (vaga) => {
+    setEditVaga(vaga)
+   }
+
+ 
   return (
     <ContainerConsulta>
       <ContentConsulta>
-        <ContentButton>
-          <button>Cadastrar Vaga</button>
-        </ContentButton>
+        <Dialog.Root>
+          <Dialog.Trigger asChild>
+            <ContentButton>
+              <button>Cadastrar Vaga</button>
+            </ContentButton>
+          </Dialog.Trigger>
+          <ModalVagas getVagas={getVagas} />
+        </Dialog.Root>
         
-        <Input placeholder="Buscar Vaga"/>
-        {
-          loading ? (
-            <Paragrafo> Carregando vagas </Paragrafo>
-          ) : (
-            <List>
-              {
-                vagas.map(vaga => (
-                  <li key={vaga.id}>{vaga.title}</li>
-                ))
-              }
-              
-     
-            </List>
-          )
-        }
+
+        <Input placeholder="Buscar Vaga" />
+        {loading ? (
+          <Paragrafo> Carregando vagas </Paragrafo>
+        ) : (
+          <List>
+            {vagas.map((vaga) => (
+              <li key={vaga.id}>
+                {vaga.title}
+                <ContainerIcons>
+                <Dialog.Root>
+                  <Dialog.Trigger asChild>
+                    <Pencil size={22} onClick={() => handleEditVaga(vaga)}/>
+                  </Dialog.Trigger>
+                  <ModalVagas getVagas={getVagas} editVaga={editVaga}/>
+                </Dialog.Root>
+                  
+                  <Trash size={22} />
+                </ContainerIcons>
+              </li>
+            ))}
+          </List>
+        )}
       </ContentConsulta>
     </ContainerConsulta>
-  )
+  );
 }
