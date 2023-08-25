@@ -10,18 +10,35 @@ export const ContainerHeader = styled.div`
   justify-content: space-between;
   padding: 2rem;
 
-  span {
-    color: #fff;
-    font-weight: 700;
-    font-size: 16px;
+  div {
+    display: flex;
+    gap: 1rem;
 
-    border-bottom: 2px solid transparent;
+    a {
+      color: #fff;
+      font-weight: 700;
+      font-size: 16px;
+      text-decoration: none;
 
-    &:hover {
-      cursor: pointer;
-      border-bottom: 2px solid #0287cf;
+      border-bottom: 2px solid transparent;
+
+      &.active {
+        border-bottom: 2px solid #0287cf;
+      }
+
+      span {
+        &:hover {
+          cursor: pointer;
+          border-bottom: 2px solid #0287cf;
+        }
+      }
     }
   }
+`;
+
+export const ButtonSingOut = styled.button`
+  background: transparent;
+  border: none;
 
   svg {
     color: #fff;

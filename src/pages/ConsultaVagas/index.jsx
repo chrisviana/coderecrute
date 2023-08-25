@@ -12,6 +12,7 @@ import { Pencil, Trash } from "@phosphor-icons/react";
 import * as Dialog from '@radix-ui/react-dialog';
 import { ModalVagas } from "../../components/ModalVagas";
 import axios from "axios";
+import { ModalDelete } from "../../components/ModalDelete";
 
 export function ConsultaVagas() {
   const [vagas, setVagas] = useState([]);
@@ -79,8 +80,15 @@ export function ConsultaVagas() {
                   </Dialog.Trigger>
                   <ModalVagas getVagas={getVagas} editVaga={editVaga}/>
                 </Dialog.Root>
+
+                <Dialog.Root>
+                  <Dialog.Trigger asChild>
+                    <Trash size={22} />
+                  </Dialog.Trigger>
+                  <ModalDelete vaga={vaga.title} id={vaga.id} getVagas={getVagas}/>
+                </Dialog.Root>
                   
-                  <Trash size={22} />
+                 
                 </ContainerIcons>
               </li>
             ))}
