@@ -1,16 +1,19 @@
 
 import IMGLogo from '../../assets/logo.png'
 import { Container, Content } from './styles'
-import { singInWithGooglePopup  } from '../../service/firebase'
 import { useNavigate } from 'react-router-dom'
+import { useContext } from 'react'
+import { AuthContext } from '../../context/authContext'
 export function LoginCandidato() {
+
+  const { signIn  } = useContext(AuthContext)
 
   const navigate = useNavigate()
   const logGoogleUser = async () => {
-    const reponse = await singInWithGooglePopup()
-
-    navigate("/cadidato/dashboard")
+    await signIn()
+    navigate("/candidato/dashboard")
   }
+
   return (
     <Container>
       <Content>

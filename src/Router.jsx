@@ -19,16 +19,14 @@ export function Router() {
 
   return (
     <Routes>
-
-      <Route path="/login" element={<LoginCandidato />} />
-      <Route element={<LayoutCandidato />}>
-        <Route path="/"  element={<Home />} />
-        <Route path="/vaga/:id" element={<SobreVaga />} />
-        <Route path="/cadidato/dashboard" element={<Dashboard />} />
-        <Route path="/cadidato/cadastro" element={<CadastroCandidato />} />
-      </Route>
-      
-
+        <Route path="/login" element={<LoginCandidato />} />
+        <Route element={<LayoutCandidato />}>
+          <Route path="/"  element={<Home />} />
+          <Route path="/vaga/:id" element={<SobreVaga />} />
+          <Route path="/candidato/dashboard" element={<Dashboard />} />
+          <Route path="/candidato/cadastro" element={<CadastroCandidato />} />
+        </Route>
+  
       <Route path="/admin" element={<Login />} />
       <Route
         path="/admin/app"

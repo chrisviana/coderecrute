@@ -1,3 +1,11 @@
+import { Link } from "react-router-dom";
+
 export function Dashboard() {
-  return <h1>Dashboard</h1>
+  return (
+    <div>
+      <Link to="/">
+        Vagas em aberto
+      </Link>
+    </div>
+  )
 }
