@@ -6,7 +6,10 @@ export function Header(){
 
   return (
     <ContainerHeader>
-      <img src={imgLogo} alt="Logo coderecrute" width={180} />
+      <Link to="/">
+        <img src={imgLogo} alt="Logo coderecrute" width={180} />
+      </Link>
+      
       <Link to="/login">
         <ButtonLogin>
           Login

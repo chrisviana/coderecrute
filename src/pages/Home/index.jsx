@@ -1,4 +1,5 @@
-import { ButtonAplicar, Card, ContainerHome, ContentVagas, InputSearchVagas, Title } from "./styles";
+import { ArrowSquareOut } from "@phosphor-icons/react";
+import { ButtonAplicar, ButtonMaisInfo, Card, ContainerHome, ContentVagas, InputSearchVagas, Title } from "./styles";
 
 export function Home() {
 
@@ -15,9 +16,9 @@ export function Home() {
             <ButtonAplicar>
               Aplicar agora
             </ButtonAplicar>
-            <button>
-              Mais info
-            </button>
+            <ButtonMaisInfo>
+              <ArrowSquareOut size={22} /> Mais Info
+            </ButtonMaisInfo>
           </div>
         </Card>
       </ContentVagas>

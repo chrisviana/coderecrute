@@ -72,3 +72,13 @@ export const ButtonAplicar = styled.button`
     transition: background 0.2s;
   }
 `;
+
+export const ButtonMaisInfo = styled.button`
+  display: flex;
+  align-items: center;
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-size: 12px;
+  cursor: pointer;
+`;
