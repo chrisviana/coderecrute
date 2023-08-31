@@ -1,8 +1,8 @@
 import { Outlet } from "react-router-dom";
-import { Header } from "../components/Administrador/Header";
+import { Header } from "../components/Candidato/Header";
 
 
-export function DefaultLayout() {
+export function LayoutCandidato() {
   return (
     <>
       <Header />

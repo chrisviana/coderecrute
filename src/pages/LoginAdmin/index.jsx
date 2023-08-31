@@ -20,7 +20,7 @@ export function Login() {
     sessionStorage.setItem("@token", "@$@F#^F2f312676Ff") 
     toast.success("Logado com sucesso")
 
-    navigete("/admin")
+    navigete("/admin/app")
   }
 
   return (

@@ -19,7 +19,7 @@ export function ConsultaEmpresas() {
     <ContainerConsulta>
       <ContentConsulta>
             <ContentButton>
-            <Link to="/admin/cadastro-empresas">
+            <Link to="/admin/app/cadastro-empresas">
               <button> Cadastrar Empesas</button>
             </Link>
             </ContentButton>

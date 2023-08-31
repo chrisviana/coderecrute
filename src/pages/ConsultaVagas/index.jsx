@@ -10,9 +10,9 @@ import {
 } from "./styles";
 import { Pencil, Trash } from "@phosphor-icons/react";
 import * as Dialog from '@radix-ui/react-dialog';
-import { ModalVagas } from "../../components/ModalVagas";
+import { ModalVagas } from "../../components/Administrador/ModalVagas";
 import axios from "axios";
-import { ModalDelete } from "../../components/ModalDelete";
+import { ModalDelete } from "../../components/Administrador/ModalDelete";
 
 export function ConsultaVagas() {
   const [vagas, setVagas] = useState([]);

@@ -8,7 +8,7 @@ export function Header(){
 
   function signOut() {
     sessionStorage.removeItem("@token");
-    navigate("/");
+    navigate("/admin");
   }
 
   const isActive = (path) => {
