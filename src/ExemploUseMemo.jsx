@@ -11,13 +11,13 @@ function ExemploUseMemo() {
   const [powerBase, setPowerBase] = useState(1);
   const [powerExponent, setPowerExponent] = useState(1);
 
-  // Calcula a potência usando useMemo para otimização
-  const powerResult = () => {
+
+  const powerResult = useMemo(() => {
     console.log('Calculating power...');
     const future = Date.now() + 1000;
     while (Date.now() < future) {}
     return Math.pow(powerBase, powerExponent);
-  };
+  },[setPowerExponent, powerBase]);
 
   return (
     <div className="calculator-container">
@@ -72,7 +72,7 @@ function ExemploUseMemo() {
       </div>
 
       <div className="result-container">
-        <p>Potência: {powerResult()}</p>
+        <p>Potência: {powerResult}</p>
       </div>
     </div>
   );
