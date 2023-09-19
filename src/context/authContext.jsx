@@ -20,7 +20,6 @@ const AuthProvider = ({children}) => {
     setUserName(user.displayName)
     setUserPhoto(user.photoURL)
 
-    console.log(response);
   }
 
   const authContextData = {
